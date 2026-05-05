@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>AR FIX FINAL</title>
-
-  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồ Nội Thất AR</title>
+    <!-- Nhúng thư viện AR của Google -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <style>
+        body { margin: 0; background-color: #f8f9fa; }
+        /* Để khung hiển thị chiếm hết màn hình điện thoại */
+        model-viewer {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
 </head>
+<body>
 
-<body style="margin:0; overflow:hidden;">
+    <!-- src: đường dẫn file 3D của bạn -->
+    <!-- ios-src: nếu bạn có file .usdz cho iPhone (không bắt buộc, iPhone vẫn chạy được glb qua web) -->
+    <model-viewer 
+        src="sofa.glb" 
+        ar 
+        ar-modes="webxr scene-viewer quick-look" 
+        camera-controls 
+        shadow-intensity="1" 
+        touch-action="pan-y">
+        
+        <!-- Nút bấm hiển thị trên web để kích hoạt chế độ camera -->
+        <button slot="ar-button" style="background-color: #007bff; color: white; border: none; border-radius: 4px; padding: 10px 20px; position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);">
+            BẮT ĐẦU ĐẶT ĐỒ VẬT
+        </button>
 
-<a-scene
-  embedded
-  renderer="logarithmicDepthBuffer: true;"
-  vr-mode-ui="enabled: false"
-  arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
->
-
-  <a-marker preset="hiro">
-    <a-box position="0 0.5 0" color="red"></a-box>
-  </a-marker>
-
-  <a-entity camera></a-entity>
-
-</a-scene>
+    </model-viewer>
 
 </body>
 </html>
